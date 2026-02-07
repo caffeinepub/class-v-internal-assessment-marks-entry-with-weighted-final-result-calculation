@@ -1,0 +1,65 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-implement-a-frontend-final-results-sheet-screen-that-displays-for-the-selected-session-a-table-for-all-students-showing-each-student-s-marks-fa1-fa2-sa1-sa2-written-work-project-work-plus-the-weightage-marks-and-final-totals-as-provided-by-the-backend",
+      "featureTitle": "Implement a frontend \"Final Results Sheet\" screen that displays (for the selected session) a table for all students showing each student’s marks: FA1, FA2, SA1, SA2, Written Work, Project Work, plus the weightage marks and final totals as provided by the backend.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/layout/AppLayout.tsx",
+        "frontend/src/features/results/SessionResultsScreen.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-an-opening-window-splash-landing-view-shown-first-when-the-app-is-opened-that-displays-exactly-class-v-assessment-system-by-ratnakara-ranbida-english-text",
+      "featureTitle": "Add an opening window/splash/landing view shown first when the app is opened that displays exactly: \"Class V Assessment System By Ratnakara Ranbida\" (English text).",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/SplashScreen.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-any-frontend-explanatory-text-about-the-calculation-method-to-match-the-implemented-two-stage-rounding-behavior-and-the-backend-s-current-weightage-rules",
+      "featureTitle": "Update any frontend explanatory text about the calculation method to match the implemented two-stage rounding behavior and the backend’s current weightage rules.",
+      "files": [
+        "frontend/src/features/results/StudentResultsScreen.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

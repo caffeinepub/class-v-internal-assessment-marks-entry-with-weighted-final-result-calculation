@@ -1,0 +1,80 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-07T10:57:33.415Z",
+  "summary": "Diff adds a splash screen, updates navigation/UI to include a “Final Results Sheet”, introduces a backend migration module and a new persistentMarks map, and updates frontend results screens with two-stage rounding help text. However, key backend requirements (stable persistence semantics, backend two-stage rounding, and detailed backend results APIs) are not evidenced in the provided diff summary, and the splash text is not rendered as the exact required string.",
+  "missing_requirements": [
+    {
+      "id": "REQ-1",
+      "requirement": "Fix marks persistence so each mark for a given (studentId, subject, assessmentType) is a single updatable record and persists across refreshes and canister upgrades (stable storage).",
+      "reason": "The diff shows a new in-memory Map-based `persistentMarks` and a migration module, but does not show stable variables or preupgrade/postupgrade logic (or other stable-state persistence) that guarantees upgrade persistence; also `submitMarks` implementation is truncated so overwrite behavior cannot be confirmed from evidence.",
+      "evidence": [
+        "backend/main.mo",
+        "backend/migration.mo"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "requirement": "Update backend final mark calculation to apply two-stage rounding (ceil) for FA1+FA2+SA1 and SA2 before summing, and return only whole numbers.",
+      "reason": "Two-stage rounding is implemented in the frontend `SessionResultsScreen` helper logic, but there is no visible backend computation change in the provided backend diff excerpt showing the required rounding behavior or guarantees that backend returns whole-number totals using the new rules.",
+      "evidence": [
+        "frontend/src/features/results/SessionResultsScreen.tsx",
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "requirement": "Provide backend APIs/types for a detailed Final Results Sheet including raw marks and weighted marks per student per subject, final subject totals, and grand totals; existing results queries updated consistently.",
+      "reason": "The frontend builds a detailed breakdown by deriving weights client-side from `marksEntries`, but the diff does not evidence any new backend query/type that returns per-subject raw+weighted breakdowns and totals as specified.",
+      "evidence": [
+        "frontend/src/features/results/SessionResultsScreen.tsx",
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "requirement": "Implement a frontend Final Results Sheet that renders the detailed data returned by the backend (raw marks + weightage marks + totals).",
+      "reason": "The UI appears to compute weightage marks and totals on the client (e.g., `roundUpDivision`, `combinedWeighted`, `sa2Weighted`) rather than rendering weightage marks provided by backend APIs.",
+      "evidence": [
+        "frontend/src/features/results/SessionResultsScreen.tsx"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "requirement": "Add an opening splash/landing view shown first on app open that displays exactly: \"Class V Assessment System By Ratnakara Ranbida\".",
+      "reason": "The splash screen splits the required phrase into separate elements: an `h1` with \"Class V Assessment System\" and a `p` with \"By Ratnakara Ranbida\", so the exact text as a single string is not displayed verbatim.",
+      "evidence": [
+        "frontend/src/components/SplashScreen.tsx",
+        "frontend/src/App.tsx"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Footer attribution with an emoji and “Built with ❤️ using caffeine.ai” link.",
+      "reason": "Not requested in the BuildRequest and introduces extra branded content (and a non-text emoji) beyond specified UI changes.",
+      "evidence": [
+        "frontend/src/components/layout/AppLayout.tsx"
+      ]
+    },
+    {
+      "description": "Splash screen includes decorative icon/animation/gradient styling and auto-transition timing.",
+      "reason": "BuildRequest only specifies showing the exact text and transitioning into normal flow; additional branding visuals/animations/timing were not requested.",
+      "evidence": [
+        "frontend/src/components/SplashScreen.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.74,
+  "changed_files": [
+    "backend/main.mo",
+    "backend/migration.mo",
+    "frontend-file-summaries.txt",
+    "frontend/src/App.tsx",
+    "frontend/src/components/SplashScreen.tsx",
+    "frontend/src/components/layout/AppLayout.tsx",
+    "frontend/src/features/results/SessionResultsScreen.tsx",
+    "frontend/src/features/results/StudentResultsScreen.tsx",
+    "project_state.json"
+  ]
+}

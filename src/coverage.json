@@ -1,0 +1,95 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-07T10:57:33.419Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 6,
+    "implemented": 3,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Fix marks persistence so that each mark for a given (studentId, subject, assessmentType) is stored as a single updatable record (overwrite on re-save) and remains saved across page refreshes and canister upgrades unless the user explicitly edits and saves again.",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Update backend final mark calculation to apply two-stage rounding (round up/ceiling) exactly as follows: (1) compute the weighted mark for the combined component FA1+FA2+SA1, then round up to a whole number; (2) compute the weighted mark for SA2, then round up to a whole number; then add these rounded components (plus written work and project work weighted components) to produce the final subject total.",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Provide backend APIs and types to support a detailed \"Final Results Sheet\" view that includes, per student and per subject, all raw marks (FA1, FA2, SA1, SA2, Written Work, Project Work) and the corresponding weighted marks (weightage marks), along with the final subject total and grand total.",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Implement a frontend \"Final Results Sheet\" screen that displays (for the selected session) a table for all students showing each student’s marks: FA1, FA2, SA1, SA2, Written Work, Project Work, plus the weightage marks and final totals as provided by the backend.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/backend.d.ts",
+          "frontend/src/hooks/useResults.ts",
+          "frontend/src/features/results/SessionResultsScreen.tsx",
+          "frontend/src/components/layout/AppLayout.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/features/results/SessionResultsScreen.tsx",
+          "frontend/src/components/layout/AppLayout.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-5",
+        "summary": "Add an opening window/splash/landing view shown first when the app is opened that displays exactly: \"Class V Assessment System By Ratnakara Ranbida\" (English text).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/SplashScreen.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/SplashScreen.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-6",
+        "summary": "Update any frontend explanatory text about the calculation method to match the implemented two-stage rounding behavior and the backend’s current weightage rules.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/features/results/StudentResultsScreen.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/features/results/StudentResultsScreen.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "backend/main.mo",
+    "backend/migration.mo",
+    "build-request.json",
+    "caffeine.lock.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/App.tsx",
+    "frontend/src/components/SplashScreen.tsx",
+    "frontend/src/components/layout/AppLayout.tsx",
+    "frontend/src/features/results/SessionResultsScreen.tsx",
+    "frontend/src/features/results/StudentResultsScreen.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

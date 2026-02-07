@@ -1,0 +1,18 @@
+{
+  "frontend/src/App.tsx": "Main application component managing authentication, profile setup, navigation between views, session/student context state, and splash screen display on initial load.",
+  "frontend/src/components/auth/LoginButton.tsx": "Login/logout button component using Internet Identity with loading states and query cache clearing on logout.",
+  "frontend/src/components/auth/ProfileSetupDialog.tsx": "Modal dialog for first-time user profile setup, prompting for name and saving via backend, using showCloseButton prop to prevent dismissal.",
+  "frontend/src/components/layout/AppLayout.tsx": "Application layout wrapper with header, navigation tabs (including \"Final Results Sheet\" label), main content area, and footer with caffeine.ai attribution.",
+  "frontend/src/features/sessions/SessionsScreen.tsx": "Session management screen for creating and selecting academic year sessions, stored in localStorage.",
+  "frontend/src/features/students/StudentsScreen.tsx": "Student management screen for adding students to a session and selecting them for marks entry, stored in localStorage.",
+  "frontend/src/features/marks/MarksEntryScreen.tsx": "Marks entry interface displaying a table of subjects (rows) and assessments (columns) with validation and backend submission, with properly typed promises array.",
+  "frontend/src/features/results/StudentResultsScreen.tsx": "Individual student results view showing final weighted marks per subject and grand total with updated two-stage rounding calculation help text.",
+  "frontend/src/features/results/SessionResultsScreen.tsx": "Final Results Sheet displaying detailed breakdown for all students including raw marks (FA1, FA2, SA1, SA2, Written Work, Project Work), weightage marks with two-stage rounding, subject totals, and grand totals.",
+  "frontend/src/hooks/useUserProfile.ts": "React Query hooks for fetching and saving user profiles with proper loading state management to prevent modal flash.",
+  "frontend/src/hooks/useMarks.ts": "React Query hooks for fetching raw marks and submitting marks with automatic cache invalidation.",
+  "frontend/src/hooks/useResults.ts": "React Query hooks for fetching computed final subject results and session reports.",
+  "frontend/src/lib/marksConstants.ts": "Constants defining subjects, assessments, full marks values, and helper functions for labels and lookups.",
+  "frontend/src/lib/marksValidation.ts": "Client-side validation helper for marks input ensuring values are within valid ranges.",
+  "frontend/src/index.css": "Global styles with OKLCH color system using blue-teal palette for light/dark modes, avoiding purple/generic blue.",
+  "frontend/src/components/SplashScreen.tsx": "Splash screen component displaying \"Class V Assessment System By Ratnakara Ranbida\" with auto-transition after 2.5 seconds."
+}

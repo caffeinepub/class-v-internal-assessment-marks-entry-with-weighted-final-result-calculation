@@ -1,0 +1,77 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Final Results Sheet UI, splash opening view, and updated calculation help text",
+  "requirements": [
+    {
+      "id": "REQ-4",
+      "summary": "Implement a detailed Final Results Sheet screen for the selected session using backend-provided raw marks, weightage marks, subject totals, and grand totals.",
+      "acceptanceCriteria": [
+        "The session results UI no longer shows placeholder dashes due to missing per-subject marks; it renders the detailed data returned by the backend.",
+        "For each student, the screen shows raw marks and weightage marks for FA1, FA2, SA1, SA2, Written Work, and Project Work, and also shows final subject totals and a grand total.",
+        "All user-facing labels are in English (e.g., “Final Results Sheet”, “Weightage”, “Written Work”, “Project Work”)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/backend.d.ts",
+          "operation": "modify",
+          "description": "Update frontend backend type declarations to include the new detailed Final Results Sheet data structures and the backend function signature(s) required to fetch per-student/per-subject raw marks, weightage marks, final subject totals, and grand totals for session-wide display."
+        },
+        {
+          "path": "frontend/src/hooks/useResults.ts",
+          "operation": "modify",
+          "description": "Add/adjust React Query hook(s) to fetch the detailed Final Results Sheet dataset from the backend actor (using the updated backend interface types), and expose loading/error states for the Final Results Sheet screen."
+        },
+        {
+          "path": "frontend/src/features/results/SessionResultsScreen.tsx",
+          "operation": "modify",
+          "description": "Replace the current simplified/placeholder subject rendering with a full “Final Results Sheet” table that shows, for each student in the selected session, each subject’s raw marks (FA1, FA2, SA1, SA2, Written Work, Project Work), corresponding weightage marks, final subject total, and the student grand total, based strictly on backend-returned values."
+        },
+        {
+          "path": "frontend/src/components/layout/AppLayout.tsx",
+          "operation": "modify",
+          "description": "Update navigation/tab labels to reflect the “Final Results Sheet” wording (English), and ensure the existing session-wide results navigation still routes to the updated screen (no orphan screens). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Ensure the session-wide results route/view wiring continues to work with the updated “Final Results Sheet” screen and that it remains accessible from the normal app flow when a session is selected."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Add an opening splash/landing view shown first on app open with the exact specified branding text, then transition into the normal app flow.",
+      "acceptanceCriteria": [
+        "On initial app load, the first view shown contains the exact text: \"Class V Assessment System By Ratnakara Ranbida\".",
+        "The opening view transitions into the normal app flow without breaking authentication or navigation."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/SplashScreen.tsx",
+          "operation": "create",
+          "description": "Create a splash/landing view component that displays exactly the required text and provides a simple transition mechanism (e.g., time-based or user action) to proceed into the existing app flow. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire the new SplashScreen so it is the first view shown on initial app load (before existing auth/profile gating), and ensure the app transitions to the existing login/authenticated flows without disrupting navigation state. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Update frontend calculation help text to describe the two-stage rounding behavior and avoid contradictions with backend weightage rules.",
+      "acceptanceCriteria": [
+        "The \"Calculation Method\" section (and any similar help text) describes the two-stage rounding for FA1+FA2+SA1 and SA2 and does not contradict backend computation."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/features/results/StudentResultsScreen.tsx",
+          "operation": "modify",
+          "description": "Revise the “Calculation Method” copy to explicitly describe two-stage rounding: round up the weighted FA1+FA2+SA1 component, round up the weighted SA2 component, then sum those rounded values with written work and project work weighted components to produce final totals; keep all user-facing text in English."
+        }
+      ]
+    }
+  ]
+}

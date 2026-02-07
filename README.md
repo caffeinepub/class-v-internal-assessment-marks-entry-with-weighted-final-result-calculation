@@ -1,2 +1,3 @@
-# class-v-internal-assessment-marks-entry-with-weighted-final-result-calculation
-Exported from Caffeine project: Two-stage rounding, detailed final results sheet, and branded opening screen for Class V Assessment System
+## 
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`
