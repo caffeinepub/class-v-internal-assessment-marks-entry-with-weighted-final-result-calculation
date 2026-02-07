@@ -11,6 +11,7 @@ import StudentResultsScreen from './features/results/StudentResultsScreen';
 import SessionResultsScreen from './features/results/SessionResultsScreen';
 import SplashScreen from './components/SplashScreen';
 import { Toaster } from '@/components/ui/sonner';
+import { initIIWebViewShim } from './utils/iiLoginWebViewShim';
 
 type View = 'sessions' | 'students' | 'marks' | 'student-results' | 'session-results';
 
@@ -25,6 +26,15 @@ export default function App() {
   const [selectedStudent, setSelectedStudent] = useState<{ id: string; name: string } | null>(null);
 
   const showProfileSetup = isAuthenticated && !profileLoading && isFetched && userProfile === null;
+
+  // Initialize Internet Identity WebView shim for Capacitor Android
+  useEffect(() => {
+    try {
+      initIIWebViewShim();
+    } catch (error) {
+      console.warn('Failed to initialize WebView shim:', error);
+    }
+  }, []);
 
   // Reset navigation when logging out
   useEffect(() => {

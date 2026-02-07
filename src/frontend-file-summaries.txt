@@ -1,6 +1,6 @@
 {
-  "frontend/src/App.tsx": "Main application component managing authentication, profile setup, navigation between views, session/student context state, and splash screen display on initial load.",
-  "frontend/src/components/auth/LoginButton.tsx": "Login/logout button component using Internet Identity with loading states and query cache clearing on logout.",
+  "frontend/src/App.tsx": "Main application component managing authentication, profile setup, navigation between views, session/student context state, splash screen display, and Internet Identity WebView shim initialization with error handling.",
+  "frontend/src/components/auth/LoginButton.tsx": "Login/logout button component using Internet Identity with loading states, query cache clearing on logout, and Android-specific user feedback via toast notifications.",
   "frontend/src/components/auth/ProfileSetupDialog.tsx": "Modal dialog for first-time user profile setup, prompting for name and saving via backend, using showCloseButton prop to prevent dismissal.",
   "frontend/src/components/layout/AppLayout.tsx": "Application layout wrapper with header, navigation tabs (including \"Final Results Sheet\" label), main content area, and footer with caffeine.ai attribution.",
   "frontend/src/features/sessions/SessionsScreen.tsx": "Session management screen for creating and selecting academic year sessions, stored in localStorage.",
@@ -14,5 +14,20 @@
   "frontend/src/lib/marksConstants.ts": "Constants defining subjects, assessments, full marks values, and helper functions for labels and lookups.",
   "frontend/src/lib/marksValidation.ts": "Client-side validation helper for marks input ensuring values are within valid ranges.",
   "frontend/src/index.css": "Global styles with OKLCH color system using blue-teal palette for light/dark modes, avoiding purple/generic blue.",
-  "frontend/src/components/SplashScreen.tsx": "Splash screen component displaying \"Class V Assessment System By Ratnakara Ranbida\" with auto-transition after 2.5 seconds."
+  "frontend/src/components/SplashScreen.tsx": "Splash screen component displaying \"Class V Assessment System By Ratnakara Ranbida\" with auto-transition after 2.5 seconds.",
+  "frontend/capacitor.config.ts": "Capacitor configuration defining app ID, name, web directory, and server settings including Internet Identity domain allowlist for Android WebView navigation.",
+  "frontend/src/utils/capacitorPlatform.ts": "Platform detection utilities using runtime checks via window.Capacitor global object to avoid build-time dependencies on Capacitor packages.",
+  "frontend/src/utils/iiLoginWebViewShim.ts": "Internet Identity WebView compatibility shim using dynamic runtime access to Capacitor plugins (Browser, App) to handle authentication in Android without requiring build-time imports.",
+  "frontend/index.html": "HTML entry point with viewport meta tags optimized for Capacitor mobile WebView including viewport-fit and tap-highlight settings.",
+  "frontend/android/build.gradle": "Top-level Android Gradle build configuration with Google and Maven Central repositories and Android Gradle Plugin 8.2.1.",
+  "frontend/android/app/build.gradle": "Android app module Gradle configuration with debug/release build types, environment-variable-driven release signing, and Capacitor plugin dependencies.",
+  "frontend/android/gradle.properties": "Gradle project properties configuring JVM memory, AndroidX, parallel builds, and architecture settings for Android build.",
+  "frontend/android/variables.gradle": "Android SDK version variables defining min/compile/target SDK levels and AndroidX library versions used across the project.",
+  "frontend/android/app/src/main/AndroidManifest.xml": "Android manifest declaring MainActivity, Internet permissions, deep link intent filter for auth callback, and FileProvider configuration.",
+  "frontend/android/app/src/main/java/com/odisha/classv/assessment/MainActivity.java": "Capacitor MainActivity that extends BridgeActivity to host the web app in Android WebView.",
+  "frontend/android/app/src/main/res/values/strings.xml": "Android string resources defining app name, package name, and custom URL scheme for deep linking.",
+  "frontend/android/app/src/main/res/xml/file_paths.xml": "FileProvider paths configuration for sharing files between app and external storage.",
+  "frontend/ANDROID_APK_BUILD.md": "Comprehensive documentation covering prerequisites, Capacitor setup, web app build, debug/release APK build steps, signing configuration, Internet Identity testing on Android, troubleshooting, and CI/CD integration.",
+  "frontend/android/keystore/README.md": "Release signing documentation explaining keystore generation, Gradle configuration via environment variables or properties file, CI/CD integration, and security best practices.",
+  "frontend/android/.gitignore": "Git ignore rules for Android build artifacts, IDE files, keystores, and Capacitor-generated files."
 }

@@ -2,6 +2,8 @@ import { useInternetIdentity } from '../../hooks/useInternetIdentity';
 import { useQueryClient } from '@tanstack/react-query';
 import { Button } from '@/components/ui/button';
 import { LogIn, LogOut } from 'lucide-react';
+import { isCapacitorAndroid } from '../../utils/capacitorPlatform';
+import { toast } from 'sonner';
 
 export default function LoginButton() {
   const { login, clear, loginStatus, identity } = useInternetIdentity();
@@ -16,12 +18,24 @@ export default function LoginButton() {
       queryClient.clear();
     } else {
       try {
+        // Show a helpful message for Android users
+        if (isCapacitorAndroid()) {
+          toast.info('Opening login in browser...', {
+            description: 'You will be redirected back to the app after login.'
+          });
+        }
+        
         await login();
       } catch (error: any) {
         console.error('Login error:', error);
+        
         if (error.message === 'User is already authenticated') {
           await clear();
           setTimeout(() => login(), 300);
+        } else if (isCapacitorAndroid()) {
+          toast.error('Login failed', {
+            description: 'Please try again or check your internet connection.'
+          });
         }
       }
     }

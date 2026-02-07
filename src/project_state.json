@@ -1,36 +1,32 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Build a Class V Assessment System that permanently saves individual assessment marks, applies two-stage rounding in weighted final mark calculations, and generates a detailed final results sheet with a branded opening screen.",
-  "architectural_notes": [
-    "Marks must be read from persistent storage on load/refresh and only written/updated when the user explicitly saves/edits."
-  ],
-  "known_issues": [
-    "Saved student marks are not persisting correctly after using Save mark (marks appear to be overwritten/lost)."
-  ],
-  "isFixRequest": true,
+  "summary": "New project",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-implement-a-frontend-final-results-sheet-screen-that-displays-for-the-selected-session-a-table-for-all-students-showing-each-student-s-marks-fa1-fa2-sa1-sa2-written-work-project-work-plus-the-weightage-marks-and-final-totals-as-provided-by-the-backend",
-      "title": "Implement a frontend \"Final Results Sheet\" screen that displays (for the selected session) a table for all students showing each student’s marks: FA1, FA2, SA1, SA2, Written Work, Project Work, plus the weightage marks and final totals as provided by the backend.",
+      "id": "feature-add-an-android-build-wrapper-for-the-existing-react-frontend-so-the-project-can-be-built-and-distributed-as-a-signed-android-apk",
+      "title": "Add an Android build wrapper for the existing React frontend so the project can be built and distributed as a signed Android .apk.",
       "reqIds": [
-        "REQ-4"
+        "REQ-1"
       ],
       "version": 1
     },
     {
-      "id": "feature-add-an-opening-window-splash-landing-view-shown-first-when-the-app-is-opened-that-displays-exactly-class-v-assessment-system-by-ratnakara-ranbida-english-text",
-      "title": "Add an opening window/splash/landing view shown first when the app is opened that displays exactly: \"Class V Assessment System By Ratnakara Ranbida\" (English text).",
+      "id": "feature-ensure-internet-identity-authentication-works-from-the-android-app-context-by-handling-login-flow-in-a-way-compatible-with-android-webview-app-wrapper-e-g-opening-the-identity-provider-in-an-external-browser-custom-tab-and-returning-to-the-app-without-changing-the-immutable-internet-identity-hook-files",
+      "title": "Ensure Internet Identity authentication works from the Android app context by handling login flow in a way compatible with Android WebView/app wrapper (e.g., opening the identity provider in an external browser/custom tab and returning to the app), without changing the immutable Internet Identity hook files.",
       "reqIds": [
-        "REQ-5"
+        "REQ-2"
       ],
       "version": 1
     },
     {
-      "id": "feature-update-any-frontend-explanatory-text-about-the-calculation-method-to-match-the-implemented-two-stage-rounding-behavior-and-the-backend-s-current-weightage-rules",
-      "title": "Update any frontend explanatory text about the calculation method to match the implemented two-stage rounding behavior and the backend’s current weightage rules.",
+      "id": "feature-add-concise-build-documentation-to-the-repo-describing-prerequisites-and-step-by-step-instructions-to-produce-debug-and-release-apk-artifacts-for-the-app",
+      "title": "Add concise build documentation to the repo describing prerequisites and step-by-step instructions to produce debug and release APK artifacts for the app.",
       "reqIds": [
-        "REQ-6"
+        "REQ-3"
       ],
       "version": 1
     }
@@ -38,54 +34,13 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Persist each assessment mark (FA1, FA2, SA1, SA2, Written Work, Project Work) so saved marks remain forever unless manually edited.",
+      "summary": "Build and deliver an Android APK package for the project",
       "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-2",
-      "summary": "Implement two-stage rounding in final mark calculation: round after computing weightage of (FA1+FA2+SA1), round after computing weightage of SA2, then sum all components for the final result.",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-3",
-      "summary": "Create a Final Results Sheet that displays each student's FA1, FA2, SA1, SA2, Written Work, Project Work marks plus the corresponding weightage marks.",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-4",
-      "summary": "Add an opening window/splash/landing screen that shows: \"Class V Assessment System By Ratnakara Ranbida\" when the app is opened.",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-5",
-      "summary": "Fix marks persistence so that each mark for a given (studentId, subject, assessmentType) is stored as a single updatable record (overwrite on re-save) and remains saved across page refreshes and canister upgrades unless the user explicitly edits and saves again.",
-      "reqIds": [
-        "REQ-1"
-      ],
-      "status": "pending"
-    },
-    {
-      "id": "AR-6",
-      "summary": "Update backend final mark calculation to apply two-stage rounding (round up/ceiling) exactly as follows: (1) compute the weighted mark for the combined component FA1+FA2+SA1, then round up to a whole number; (2) compute the weighted mark for SA2, then round up to a whole number; then add these rounded components (plus written work and project work weighted components) to produce the final subject total.",
-      "reqIds": [
-        "REQ-2"
-      ],
-      "status": "pending"
-    },
-    {
-      "id": "AR-7",
-      "summary": "Provide backend APIs and types to support a detailed \"Final Results Sheet\" view that includes, per student and per subject, all raw marks (FA1, FA2, SA1, SA2, Written Work, Project Work) and the corresponding weighted marks (weightage marks), along with the final subject total and grand total.",
-      "reqIds": [
-        "REQ-3"
-      ],
       "status": "pending"
     }
   ],
-  "projectName": "Two-stage rounding, detailed final results sheet, and branded opening screen for Class V Assessment System",
+  "gameProjectType": "none",
+  "projectName": "Package the existing web app as an Android APK",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

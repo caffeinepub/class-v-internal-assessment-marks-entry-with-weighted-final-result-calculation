@@ -10,9 +10,7 @@ import Text "mo:core/Text";
 
 import MixinAuthorization "authorization/MixinAuthorization";
 import AccessControl "authorization/access-control";
-import Migration "migration";
 
-(with migration = Migration.run)
 actor {
   // Include authorization system
   let accessControlState = AccessControl.initState();
